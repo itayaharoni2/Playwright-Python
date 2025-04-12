@@ -20,14 +20,20 @@ playwright install
 pip install pytest-html
 ```
 
----
+-----------
 
 # Commands to Run the Tests
 
-- Run all the tests:
+- Run all the tests (defaults to Chromium):
 
 ```bash
 pytest
+```
+
+- Run tests with a specific browser (chromium, firefox, or webkit):
+
+```bash
+pytest --browser=firefox
 ```
 
 - Run the tests and gives more detailed results:
@@ -62,6 +68,14 @@ Then open `report.html` to see a styled report with pass/fail status.
 
 ---
 
+Tip: If you want to run tests in other browsers (like Firefox or WebKit), make sure they are installed:
+
+```bash
+playwright install
+pytest --browser=firefox
+```
+---
+
 # Test Organization Approach
 
 - Tests are divided by the categories in the instructions:
@@ -84,7 +98,7 @@ Then open `report.html` to see a styled report with pass/fail status.
   - `pytest` – test runner
   - `pytest-playwright` – integration of Playwright with pytest
 
----
+----------
 
 # Challenges and Solutions
 
