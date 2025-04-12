@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: "3.8"
 
       - name: Install dependencies
         run: |
@@ -25,22 +25,16 @@ jobs:
       - name: Manually install Playwright dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libasound2 libnss3 libxss1 libatk-bridge2.0-0 libcups2 libxshmfence1 libgbm1 libgtk-3-0 libxcomposite1 libxdamage1 libxrandr2 libglu1 libpangocairo-1.0-0 libpangoft2-1.0-0 libharfbuzz-bin libffi8 libx264-dev
+          sudo apt-get install -y libasound2t64 libnss3 libxss1 libatk-bridge2.0-0 libcups2 libxshmfence1 libgbm1 libgtk-3-0 libxcomposite1 libxdamage1 libxrandr2 libglu1 libpangocairo-1.0-0 libpangoft2-1.0-0 libharfbuzz-bin libffi8 libx264-dev
 
-      - name: Install Playwright Browsers
+      - name: Install Playwright browsers
         run: playwright install --with-deps
 
-      - name: Run tests for all browsers
-        run: |
-          pytest --browser=chromium --html=report_chromium.html --self-contained-html
-          pytest --browser=firefox --html=report_firefox.html --self-contained-html
-          pytest --browser=webkit --html=report_webkit.html --self-contained-html
+      - name: Run tests
+        run: pytest --html=report.html --self-contained-html
 
-      - name: Upload HTML Reports
-        uses: actions/upload-artifact@v3
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v3.1.2
         with:
-          name: test-reports
-          path: |
-            report_chromium.html
-            report_firefox.html
-            report_webkit.html
+          name: test-report
+          path: report.html
