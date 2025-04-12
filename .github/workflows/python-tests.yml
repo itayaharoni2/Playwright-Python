@@ -57,5 +57,5 @@ jobs:
       - name: Install Playwright Browsers
         run: playwright install
 
-      - name: Run tests
-        run: pytest --html=report.html --self-contained-html
+      - name: Run tests on all browsers
+        run: pytest --browser all --html=report.html --self-contained-html
