@@ -22,12 +22,13 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: 📦 Install dependencies and browsers
+      - name: 📦 Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          npx playwright install-deps
-          npx playwright install
+
+      - name: 🎭 Install Playwright Browsers
+        uses: microsoft/playwright-github-action@v1
 
       - name: ✅ Run tests on ${{ matrix.browser }}
         run: pytest --browser ${{ matrix.browser }} -v
