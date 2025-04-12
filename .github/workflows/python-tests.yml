@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: "3.8"
 
       - name: Install Python dependencies
         run: |
@@ -28,8 +28,8 @@ jobs:
           sudo apt-get install -y libasound2t64 libatk-bridge2.0-0 \
             libgtk-3-0 libxcb1 libxcomposite1 libxdamage1 libxrandr2 \
             libgbm1 libnss3 libxss1 libxtst6 libatspi2.0-0 libdrm2 \
-            libxshmfence1 libglu1-mesa libwoff1 libopus0 libwebp6 \
-            libwebpdemux2 libenchant1c2a libhyphen0 libgdk-pixbuf2.0-0 \
+            libxshmfence1 libglu1-mesa libwoff1 libopus0 \
+            libwebp7 libenchant-2-2 libhyphen0 libgdk-pixbuf2.0-0 \
             libegl1 libevent-2.1-7 libnotify4
 
       - name: Install Playwright Browsers
