@@ -27,9 +27,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Playwright Browsers
-        run: |
-          python -m playwright install
+      - name: Install Playwright and Browsers
+        uses: microsoft/playwright-github-action@v1
+        with:
+            with-deps: true
 
       - name: Run tests on ${{ matrix.browser }}
         run: pytest --browser ${{ matrix.browser }} -v
