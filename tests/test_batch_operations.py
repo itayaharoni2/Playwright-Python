@@ -2,6 +2,7 @@ import re
 from playwright.sync_api import Page, expect
 from pages.todos_page import TodosPage
 
+
 def test_mark_all_items_as_completed(page: Page, base_url: str):
     todos = TodosPage(page)
     todos.navigate(base_url)

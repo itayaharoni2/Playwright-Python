@@ -20,7 +20,7 @@ playwright install
 pip install pytest-html
 ```
 
------------
+---
 
 # Commands to Run the Tests
 
@@ -35,6 +35,16 @@ pytest
 ```bash
 pytest --browser=firefox
 ```
+
+---
+
+Tip: If you want to run tests in other browsers (like Firefox or WebKit), make sure they are installed:
+
+```bash
+playwright install
+pytest --browser=firefox
+```
+---
 
 - Run the tests and gives more detailed results:
 
@@ -68,14 +78,6 @@ Then open `report.html` to see a styled report with pass/fail status.
 
 ---
 
-Tip: If you want to run tests in other browsers (like Firefox or WebKit), make sure they are installed:
-
-```bash
-playwright install
-pytest --browser=firefox
-```
----
-
 # Test Organization Approach
 
 - Tests are divided by the categories in the instructions:
@@ -98,7 +100,7 @@ pytest --browser=firefox
   - `pytest` – test runner
   - `pytest-playwright` – integration of Playwright with pytest
 
-----------
+---
 
 # Challenges and Solutions
 
@@ -107,3 +109,5 @@ pytest --browser=firefox
 - Since I was working with Python, the built-in test recording feature in VSCode didn’t work. Instead, I used the `playwright codegen` command directly from the terminal. Although the recorder was confusing at first, once I understood how it worked, it became a very helpful tool for generating test code quickly.
 
 - Test flakiness: Solved by relying on Playwright’s `expect()` assertions, which include automatic waiting for element states and prevent race conditions.
+
+- CI pipeline and cross-browser testing: setting up CI and cross-browser testing was more complex than expected. Installing Playwright dependencies on GitHub Actions runners failed multiple times due to missing packages. I also ran into issues with Playwright’s browser installation and conflicting test configurations when trying to parametrize for all browsers. The final solution was to run tests only on Chromium in CI for stability, and run cross-browser tests manually when needed. This kept the pipeline reliable while still allowing cross-browser testing locally.
