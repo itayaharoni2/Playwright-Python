@@ -2,7 +2,6 @@ from playwright.sync_api import Page
 
 class TodosPage:
     def __init__(self, page: Page):
-        # is it good practice with placeholder? and with get by_role?
         self.page = page
         self.todo_input = page.get_by_placeholder("What needs to be done?")
         self.todo_items = page.locator("ul.todo-list li")
